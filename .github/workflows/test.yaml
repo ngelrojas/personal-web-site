@@ -1,4 +1,4 @@
-name: test
+name: Linting S3 BUCKET
 on:
   push:
     branches:
@@ -6,8 +6,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  log_message:
+  listing_buckets:
     runs-on: ubuntu-latest
     steps:
-      - name: Run tests logs
-        run: echo "Tests passed"
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AIM_ROLE }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: List S3 buckets
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          echo "Listing S3 buckets"
+          aws s3 ls
