@@ -19,6 +19,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AIM_ROLE }}
           aws-region: ${{ secrets.AWS_REGION }}
+          audience: sts.amazonaws.com
       - name: List S3 buckets
         env:
           AWS_REGION: ${{ secrets.AWS_REGION }}
