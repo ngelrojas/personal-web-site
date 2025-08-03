@@ -42,3 +42,8 @@ jobs:
           BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
         run: terraform apply -auto-approve -var "bucket_name=$BUCKET_NAME"
         working-directory: terraform
+
+      - name: Uploading file to s3 BUCKET
+        run: |
+          aws s3 cp index.html s3://${{secrets.BUCKET_NAME}}/index.html
+          aws s3 cp --recursive styles/ s3://${{secrets.BUCKET_NAME}}/styles/
