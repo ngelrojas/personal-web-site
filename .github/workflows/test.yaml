@@ -1,4 +1,4 @@
-name: Linting S3 BUCKET
+name: Creaa un bucket S3 con Terraform
 on:
   push:
     branches:
@@ -10,19 +10,35 @@ permissions:
   contents: read
 
 jobs:
-  listing_buckets:
+  createing_bucket:
     runs-on: ubuntu-latest
-
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AIM_ROLE }}
           aws-region: ${{ secrets.AWS_REGION }}
           audience: sts.amazonaws.com
-      - name: List S3 buckets
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Initialize Terraform
+        run: terraform init
+        working-directory: terraform
+
+      - name: terraform plan
         env:
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
         run: |
-          echo "Listing S3 buckets"
-          aws s3 ls
+          terraform plan -var "bucket_name=$BUCKET_NAME"
+        working-directory: terraform
+
+      - name: terraform apply
+        env:
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+        run: terraform apply -auto-approve
+        working-directory: terraform
