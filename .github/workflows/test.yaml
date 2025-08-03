@@ -34,7 +34,7 @@ jobs:
         env:
           BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
         run: |
-          terraform plan -lock=false -var "bucket_name=$BUCKET_NAME"
+          terraform plan -var "bucket_name=$BUCKET_NAME"
         working-directory: terraform
 
       - name: terraform apply
