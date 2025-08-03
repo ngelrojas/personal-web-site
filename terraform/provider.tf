@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
   backend "s3"{
-    bucket = "tf-resources-gha"
+    bucket = "tr-resources-gha"
     region = "us-east-1"
     key    = "github-actions/terraform.tfstate"
     encrypt = true
