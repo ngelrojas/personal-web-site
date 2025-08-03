@@ -1,4 +1,4 @@
-name: Creaa un bucket S3 con Terraform
+name: Creating un bucket S3 con Terraform
 on:
   push:
     branches:
@@ -22,6 +22,9 @@ jobs:
           role-to-assume: ${{ secrets.AIM_ROLE }}
           aws-region: ${{ secrets.AWS_REGION }}
           audience: sts.amazonaws.com
+
+      - name: REGION AWS
+        run: echo ${{secrets.AWS_REGION}}
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
