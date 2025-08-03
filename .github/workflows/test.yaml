@@ -23,8 +23,8 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
           audience: sts.amazonaws.com
 
-      - name: REGION AWS
-        run: echo $AWS_REGION
+      - name: Show AWS Region
+        run: echo "$AWS_REGION"
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
