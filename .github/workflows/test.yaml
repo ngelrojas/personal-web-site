@@ -20,11 +20,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AIM_ROLE }}
-          aws-region: us-east-1
+          aws-region: "us-east-1"
           audience: sts.amazonaws.com
-
-      - name: Show AWS Region
-        run: echo "$AWS_REGION"
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
