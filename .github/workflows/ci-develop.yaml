@@ -1,6 +1,9 @@
 name: Develop Environment
 
-on: develop environment
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   first-job:
