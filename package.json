@@ -1,0 +1,13 @@
+{
+  "name": "personal-web-site",
+  "version": "1.0.0",
+  "description": "Personal website project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
+
