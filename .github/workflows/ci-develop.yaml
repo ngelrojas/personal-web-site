@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  first-job:
+  Provicioning-Depencencies:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 24
       - name: Install dependencies
-        run: npm run
+        run: npm install
       - name: Run test
         run: |
           echo "npm test"
