@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 24
       - name: Install dependencies
-        run: npm ci
+        run: npm run
       - name: Run test
         run: |
           echo "npm test"
