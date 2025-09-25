@@ -9,8 +9,15 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Print greeting
-        run: echo "hello world"
-      - name: Print goodbye
-        run: echo "bye world"
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 24
+      - name: Install dependencies
+        run: npm ci
+      - name: Run test
+        run: |
+          echo "npm test"
 
